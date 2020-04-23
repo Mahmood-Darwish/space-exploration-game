@@ -8,7 +8,7 @@ public class PlayerControl : MonoBehaviour
     Rigidbody rb;
     float horozantialMovement;
     float verticalMovement;
-    float speed = 10f;
+    float speed = 2;
     float jumpHeight = 0.0001f;
     GameObject[] Planets;
     const float G = 100f;
@@ -16,7 +16,6 @@ public class PlayerControl : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.velocity = Vector3.zero;
         Planets = GameObject.FindGameObjectsWithTag("Planet");
     }
 
@@ -34,7 +33,6 @@ public class PlayerControl : MonoBehaviour
             dis *= dis;
             force = G * rb.mass * Planets[i].GetComponent<Rigidbody>().mass / dis;
             rb.AddForce(dirBetweenPlanets.normalized * force);
-            print(dirBetweenPlanets.normalized * force);
             if (force > curForce)
             {
                 curForce = force;
