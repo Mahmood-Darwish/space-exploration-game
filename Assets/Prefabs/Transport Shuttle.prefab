@@ -88,6 +88,8 @@ GameObject:
   - component: {fileID: 7383393078433278911}
   - component: {fileID: 7383393078440166461}
   - component: {fileID: 1039530595}
+  - component: {fileID: 376950694158522816}
+  - component: {fileID: 1039530596}
   m_Layer: 0
   m_Name: Transport Shuttle
   m_TagString: Untagged
@@ -104,7 +106,7 @@ Transform:
   m_GameObject: {fileID: 7383393078432790111}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -869.3, y: 47.3, z: -383.15}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.099999994, y: 0.099999994, z: 0.099999994}
   m_Children:
   - {fileID: 7383393078433278941}
   - {fileID: 7383393078433278943}
@@ -156,6 +158,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a1ae7c04ab5de48b139e833bdca1bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  f: {x: 0, y: 0, z: 0}
+--- !u!54 &376950694158522816
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7383393078432790111}
+  serializedVersion: 2
+  m_Mass: 0.01
+  m_Drag: 0
+  m_AngularDrag: 5
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &1039530596
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7383393078432790111}
+  m_Material: {fileID: 13400000, guid: e0de793e69f408247bbc4197859596ba, type: 2}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 2.0943751
+  m_Height: 12.862802
+  m_Direction: 0
+  m_Center: {x: -0.26977542, y: 1.8289376, z: -0.019000176}
 --- !u!1 &7383393078432790401
 GameObject:
   m_ObjectHideFlags: 0

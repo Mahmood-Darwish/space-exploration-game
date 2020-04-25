@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpaceShip : MonoBehaviour
 {
-
     Rigidbody rb;
     GameObject[] Planets; 
     const float G = 100f;
@@ -12,12 +11,10 @@ public class SpaceShip : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>(); 
-        rb.centerOfMass = Vector3.zero;
-        rb.inertiaTensorRotation = new Quaternion(0, 0, 0, 1);
         Planets = GameObject.FindGameObjectsWithTag("Planet");
     }
 
-   void FixedUpdate()
+   private void FixedUpdate()
     {
         Vector3 dirBetweenPlanets;
         float dis;
@@ -30,13 +27,21 @@ public class SpaceShip : MonoBehaviour
             dis = dirBetweenPlanets.magnitude;
             dis *= dis;
             force = G * rb.mass * Planets[i].GetComponent<Rigidbody>().mass / dis;
+            rb.AddForce(dirBetweenPlanets.normalized * force);
             if (force > curForce)
             {
                 curForce = force;
                 bigPlanet = dirBetweenPlanets;
             }
         }
-        rb.AddRelativeForce(curForce * bigPlanet.normalized);
-        print(bigPlanet);
+        transform.rotation = Quaternion.FromToRotation(transform.up, -bigPlanet.normalized) * transform.rotation;
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "Planet")
+        {
+            rb.velocity = collision.rigidbody.velocity;
+        }
     }
 }

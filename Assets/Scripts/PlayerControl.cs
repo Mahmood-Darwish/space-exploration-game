@@ -12,6 +12,7 @@ public class PlayerControl : MonoBehaviour
     float jumpHeight = 0.0001f;
     GameObject[] Planets;
     const float G = 100f;
+    bool jump;
 
     private void Start()
     {
@@ -41,12 +42,22 @@ public class PlayerControl : MonoBehaviour
         }
         transform.rotation = Quaternion.FromToRotation(transform.up, -bigPlanet.normalized) * transform.rotation;
     }
-
+    
     private void Update()
     {
+        jump = Input.GetKeyDown(KeyCode.Space);
         horozantialMovement = Input.GetAxis("Horizontal") * Time.deltaTime;
         verticalMovement = Input.GetAxis("Vertical") * Time.deltaTime;
         Vector3 movement = (transform.forward * verticalMovement * speed) + (transform.right * horozantialMovement * speed);
         transform.position += movement;
+    }
+
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "Planet")
+        {
+            rb.velocity = collision.rigidbody.velocity;
+        }
     }
 }
