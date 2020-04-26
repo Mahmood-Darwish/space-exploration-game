@@ -44,4 +44,5 @@ public class SpaceShip : MonoBehaviour
             rb.velocity = collision.rigidbody.velocity;
         }
     }
+
 }

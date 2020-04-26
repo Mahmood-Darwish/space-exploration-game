@@ -8,11 +8,15 @@ public class PlayerControl : MonoBehaviour
     Rigidbody rb;
     float horozantialMovement;
     float verticalMovement;
-    float speed = 2;
+    float speed = 1;
     float jumpHeight = 0.0001f;
     GameObject[] Planets;
     const float G = 100f;
     bool jump;
+    public bool canJump;
+    bool crouch = false;
+    Vector3 crouching = new Vector3(0.1f, 0.05f, 0.1f);
+    Vector3 notCrouching = new Vector3(0.1f, 0.1f, 0.1f);
 
     private void Start()
     {
@@ -41,6 +45,12 @@ public class PlayerControl : MonoBehaviour
             }
         }
         transform.rotation = Quaternion.FromToRotation(transform.up, -bigPlanet.normalized) * transform.rotation;
+        if (jump && canJump && !crouch)
+        {
+            canJump = false;
+            transform.position += transform.up;
+            rb.AddForce(transform.up * jumpHeight, ForceMode.Impulse);
+        }
     }
     
     private void Update()
@@ -48,8 +58,15 @@ public class PlayerControl : MonoBehaviour
         jump = Input.GetKeyDown(KeyCode.Space);
         horozantialMovement = Input.GetAxis("Horizontal") * Time.deltaTime;
         verticalMovement = Input.GetAxis("Vertical") * Time.deltaTime;
+        crouch = Input.GetKey(KeyCode.LeftControl);
         Vector3 movement = (transform.forward * verticalMovement * speed) + (transform.right * horozantialMovement * speed);
         transform.position += movement;
+        if (crouch)
+        {
+            speed = 0.5f;
+            transform.localScale = crouching;
+        }
+        else { speed = 1; transform.localScale = notCrouching; }
     }
 
 
