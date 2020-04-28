@@ -39,6 +39,8 @@ public class MouseLook : MonoBehaviour
             text.enabled = true;
             if (Input.GetKeyDown(KeyCode.F))
             {
+                GameManager.stateOfPlayer = 2;
+                text.enabled = false;
                 spaceCamera.SetActive(true);
                 transform.parent.gameObject.SetActive(false);
                 gameObject.SetActive(false);

@@ -1211,6 +1211,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1778350674149559757, guid: ea69c98c38218f74588a4927175d3898,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 98e0b8ae7c253c145bcd2c474dfb727a,
+        type: 2}
     - target: {fileID: 1778350675193594827, guid: ea69c98c38218f74588a4927175d3898,
         type: 3}
       propertyPath: text
@@ -1225,13 +1231,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 548681218, guid: 197c2719a82d4404899608e3fad20026, type: 3}
-      propertyPath: m_Size.z
-      value: 4.447633
+    - target: {fileID: 2099955881, guid: 197c2719a82d4404899608e3fad20026, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 548681218, guid: 197c2719a82d4404899608e3fad20026, type: 3}
-      propertyPath: m_Center.z
-      value: -0.008849801
+    - target: {fileID: 376950694158522816, guid: 197c2719a82d4404899608e3fad20026,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 7383393078432790111, guid: 197c2719a82d4404899608e3fad20026,
         type: 3}
