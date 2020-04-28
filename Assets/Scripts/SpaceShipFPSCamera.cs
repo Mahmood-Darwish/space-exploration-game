@@ -6,6 +6,10 @@ public class SpaceShipFPSCamera : MonoBehaviour
 {
     [SerializeField]
     GameObject SpaceCamera;
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.H))

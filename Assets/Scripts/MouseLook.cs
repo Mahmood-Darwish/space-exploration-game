@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class MouseLook : MonoBehaviour
 {
     GameObject player;
@@ -22,6 +21,7 @@ public class MouseLook : MonoBehaviour
     {
         player = transform.parent.gameObject;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
 
@@ -43,7 +43,6 @@ public class MouseLook : MonoBehaviour
                 text.enabled = false;
                 spaceCamera.SetActive(true);
                 transform.parent.gameObject.SetActive(false);
-                gameObject.SetActive(false);
             }
         }
         else

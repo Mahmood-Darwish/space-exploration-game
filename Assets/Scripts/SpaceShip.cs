@@ -4,11 +4,10 @@ using System.Security.Cryptography;
 using Unity.Jobs;
 using UnityEngine;
 using UnityEngine.Experimental.UIElements;
-using Vuforia;
 
 public class SpaceShip : MonoBehaviour
 {
-    Rigidbody rb;
+    public Rigidbody rb;
     GameObject[] Planets; 
     const float G = 100f;
     float liftOffTimer = 0;
@@ -16,6 +15,10 @@ public class SpaceShip : MonoBehaviour
     [SerializeField]
     float rotSpeed = 80f;
     float speed = 50;
+    [SerializeField]
+    Animator anim;
+    [SerializeField]
+    GameObject player;
 
     void Start()
     {
@@ -56,6 +59,8 @@ public class SpaceShip : MonoBehaviour
             rb.drag = 0;
             rb.angularDrag = 5;
             isGrounded = true;
+            anim.SetBool("IsGrounded", true);
+            anim.SetFloat("Speed", -1.0f);
             rb.velocity = collision.rigidbody.velocity;
         }
     }
@@ -64,6 +69,18 @@ public class SpaceShip : MonoBehaviour
     {
         if(GameManager.stateOfPlayer == 2)
         {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                GameManager.stateOfPlayer = 1;
+                player.SetActive(true);
+                player.transform.position = GameObject.FindGameObjectWithTag("SpawnPoint").gameObject.transform.position;
+                player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+                if(GameObject.FindGameObjectWithTag("SpaceCamera") != null)
+                  GameObject.FindGameObjectWithTag("SpaceCamera").SetActive(false);
+                if (GameObject.FindGameObjectWithTag("FPSCamera") != null)
+                    GameObject.FindGameObjectWithTag("FPSCamera").SetActive(false);
+            }
             if (Input.GetKey(KeyCode.Space) && isGrounded)
             {
                 liftOffTimer += Time.deltaTime;
@@ -73,6 +90,8 @@ public class SpaceShip : MonoBehaviour
                     transform.position += transform.up * 0.5f;
                     GetComponent<Rigidbody>().AddForce(transform.up * 0.02f, ForceMode.Impulse);
                     GameManager.stateOfPlayer = 2;
+                    anim.SetBool("IsGrounded", false);
+                    anim.SetFloat("Speed", 1.0f);
                     isGrounded = false;
                 }
             }
