@@ -59,9 +59,17 @@ public class SpaceShip : MonoBehaviour
             rb.drag = 0;
             rb.angularDrag = 5;
             isGrounded = true;
-            anim.SetBool("IsGrounded", true);
-            anim.SetFloat("Speed", -1.0f);
             rb.velocity = collision.rigidbody.velocity;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Planet")
+        {
+            anim.SetBool("IsGrounded", true);
+            anim.Play("Open Doors", 0, 1);
+            //anim.SetFloat("Speed", -1.0f);
         }
     }
 
@@ -91,7 +99,7 @@ public class SpaceShip : MonoBehaviour
                     GetComponent<Rigidbody>().AddForce(transform.up * 0.02f, ForceMode.Impulse);
                     GameManager.stateOfPlayer = 2;
                     anim.SetBool("IsGrounded", false);
-                    anim.SetFloat("Speed", 1.0f);
+                    anim.Play("Close Doors", 0, 0);
                     isGrounded = false;
                 }
             }
