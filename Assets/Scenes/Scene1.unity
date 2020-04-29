@@ -112,6 +112,83 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &126013511
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 126013512}
+  - component: {fileID: 126013514}
+  - component: {fileID: 126013513}
+  m_Layer: 5
+  m_Name: Spaceship exit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &126013512
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126013511}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2027332259}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0.0000072718, y: 35}
+  m_SizeDelta: {x: 320.28, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &126013513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126013511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 24
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Press 'F' to exit spaceship.
+--- !u!222 &126013514
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126013511}
+  m_CullTransparentMesh: 0
 --- !u!1 &609157991
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,24 +672,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1778350673828769029}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1104240645 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7276276345851725696, guid: 00f5cfd845257ef419ff44cafa2ba26b,
-    type: 3}
-  m_PrefabInstance: {fileID: 2082550606}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1104240646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1104240645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b86e4fecdff19cc4ca95efa8c0ab9a26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1216231828
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -872,6 +931,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f5cfd845257ef419ff44cafa2ba26b, type: 3}
+--- !u!1 &1331873020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1331873022}
+  - component: {fileID: 1331873021}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1331873021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331873020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b86e4fecdff19cc4ca95efa8c0ab9a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Planet Theme
+    clip: {fileID: 8300000, guid: 06940da7eaf1de54b8a89e1cb189b08b, type: 3}
+    volume: 0.35
+    loop: 1
+    source: {fileID: 0}
+  - name: Space Theme
+    clip: {fileID: 8300000, guid: c9418d341abbeec4383ea4d1537ff23e, type: 3}
+    volume: 0.35
+    loop: 1
+    source: {fileID: 0}
+--- !u!4 &1331873022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331873020}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1366308572
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,6 +1159,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1366308573}
+  - {fileID: 126013512}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1267,10 +1381,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -4.74
       objectReference: {fileID: 0}
+    - target: {fileID: 123277585, guid: 197c2719a82d4404899608e3fad20026, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 1039530595, guid: 197c2719a82d4404899608e3fad20026, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1057586914}
+    - target: {fileID: 1039530595, guid: 197c2719a82d4404899608e3fad20026, type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 126013513}
     - target: {fileID: 7383393078432790111, guid: 197c2719a82d4404899608e3fad20026,
         type: 3}
       propertyPath: m_Name

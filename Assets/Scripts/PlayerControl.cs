@@ -9,7 +9,7 @@ public class PlayerControl : MonoBehaviour
     float horozantialMovement;
     float verticalMovement;
     float speed = 1;
-    float jumpHeight = 0.0001f;
+    float jumpHeight = 0.005f;
     GameObject[] Planets;
     const float G = 100f;
     bool jump;
@@ -48,7 +48,7 @@ public class PlayerControl : MonoBehaviour
         if (jump && canJump && !crouch)
         {
             canJump = false;
-            transform.position += transform.up;
+            transform.position += transform.up * 0.3f;
             rb.AddForce(transform.up * jumpHeight, ForceMode.Impulse);
         }
     }

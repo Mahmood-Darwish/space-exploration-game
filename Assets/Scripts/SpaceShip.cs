@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using Unity.Jobs;
 using UnityEngine;
 using UnityEngine.Experimental.UIElements;
+using UnityEngine.UI;
 
 public class SpaceShip : MonoBehaviour
 {
@@ -19,11 +20,14 @@ public class SpaceShip : MonoBehaviour
     Animator anim;
     [SerializeField]
     GameObject player;
+    [SerializeField]
+    Text text;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>(); 
-        Planets = GameObject.FindGameObjectsWithTag("Planet");
+        Planets = GameObject.FindGameObjectsWithTag("Planet"); 
+        text.enabled = false;
     }
 
    private void FixedUpdate()
@@ -56,12 +60,24 @@ public class SpaceShip : MonoBehaviour
     {
         if (collision.gameObject.tag == "Planet")
         {
+            if(GameManager.stateOfPlayer == 2)
+                text.enabled = true;
             rb.drag = 0;
             rb.angularDrag = 5;
             isGrounded = true;
             rb.velocity = collision.rigidbody.velocity;
         }
     }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Planet")
+        {
+            if (GameManager.stateOfPlayer == 2)
+                text.enabled = false;
+        }
+    }
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -80,10 +96,9 @@ public class SpaceShip : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
                 GameManager.stateOfPlayer = 1;
-                player.SetActive(true);
                 player.transform.position = GameObject.FindGameObjectWithTag("SpawnPoint").gameObject.transform.position;
                 player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-
+                player.SetActive(true);
                 if(GameObject.FindGameObjectWithTag("SpaceCamera") != null)
                   GameObject.FindGameObjectWithTag("SpaceCamera").SetActive(false);
                 if (GameObject.FindGameObjectWithTag("FPSCamera") != null)
@@ -125,6 +140,8 @@ public class SpaceShip : MonoBehaviour
             Thrust();
             Turn();
         }
+        if (GameManager.stateOfPlayer == 1)
+            text.enabled = false;
     }
 
     void Turn()
