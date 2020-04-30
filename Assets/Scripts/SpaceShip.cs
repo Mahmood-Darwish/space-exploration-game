@@ -131,7 +131,7 @@ public class SpaceShip : MonoBehaviour
             {
                 liftOffTimer += Time.deltaTime;
                 liftOff = true;
-                if (liftOffTimer >= 1)
+                if (liftOffTimer >= 8.5)
                 {
                     liftOff = false;
                     liftOffTimer = 0;
@@ -146,6 +146,7 @@ public class SpaceShip : MonoBehaviour
             else
             {
                 // When player lets go of space button change the state of the player.
+                liftOffTimer = 0;
                 liftOff = false;
                 if (!isGrounded)
                 {

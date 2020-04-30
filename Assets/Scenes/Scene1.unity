@@ -972,7 +972,7 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - name: LiftOff
-    clip: {fileID: 8300000, guid: c9418d341abbeec4383ea4d1537ff23e, type: 3}
+    clip: {fileID: 8300000, guid: b01dc923a858c9f47ae76b89fe0ed9ac, type: 3}
     volume: 0.35
     loop: 0
     source: {fileID: 0}

@@ -53,6 +53,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //  Function to help us know if a sound is playing.
+    public bool isPlaying(string name)
+    {
+        foreach (Sound s in sounds)
+        {
+            if (s.name == name)
+            {
+                return s.source.isPlaying;
+            }
+        }
+        return false;
+    }
+
 
     //  Check which sound should be playing and manage the sounds accordingly.
     private void Update()
@@ -60,21 +73,28 @@ public class GameManager : MonoBehaviour
         if(stateOfPlayer == 1 && playingSound != 1)
         {
             gameObject.GetComponent<GameManager>().Close("Space Theme");
+            gameObject.GetComponent<GameManager>().Close("LiftOff");
             gameObject.GetComponent<GameManager>().Play("Planet Theme");
             playingSound = 1;
-        }
-        if (stateOfPlayer == 3 && playingSound != 3)
-        {
-            gameObject.GetComponent<GameManager>().Close("Planet Theme");
-            gameObject.GetComponent<GameManager>().Play("Space Theme");
-            playingSound = 3;
-        }
+        }        
         if (SpaceShip.liftOff && playingSound != 2)
         {
             gameObject.GetComponent<GameManager>().Close("Space Theme");
             gameObject.GetComponent<GameManager>().Close("Planet Theme");
             gameObject.GetComponent<GameManager>().Play("LiftOff");
             playingSound = 2;
+        }
+        if (stateOfPlayer == 3 && playingSound != 3)
+        {
+            gameObject.GetComponent<GameManager>().Close("Planet Theme");
+            gameObject.GetComponent<GameManager>().Close("LiftOff");
+            gameObject.GetComponent<GameManager>().Play("Space Theme");
+            playingSound = 3;
+        }
+        if (!SpaceShip.liftOff && gameObject.GetComponent<GameManager>().isPlaying("LiftOff"))
+        {
+            gameObject.GetComponent<GameManager>().Close("LiftOff");
+            playingSound = 0;
         }
     }
 }
