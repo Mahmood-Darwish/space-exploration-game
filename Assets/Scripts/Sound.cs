@@ -1,6 +1,8 @@
-﻿using UnityEngine.Audio;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Our custom class to save certain properties about our audio clips. We use it in game manager.
+/// </summary>
 [System.Serializable]
 public class Sound
 {

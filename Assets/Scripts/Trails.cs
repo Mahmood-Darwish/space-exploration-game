@@ -1,7 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+
+/// <summary>
+/// Leave a trail if the speed of the ship is higher than a vertian value.
+/// </summary>
 public class Trails : MonoBehaviour
 {
     SpaceShip parnett;

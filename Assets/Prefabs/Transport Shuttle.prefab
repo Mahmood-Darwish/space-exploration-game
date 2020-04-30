@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 123277585}
   m_Layer: 0
   m_Name: SpawnPoint
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123277584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.03, z: -4.11}
+  m_LocalPosition: {x: -2.44, y: -1, z: -4.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7383393078433278911}
@@ -182,7 +182,6 @@ GameObject:
   - component: {fileID: 2099955879}
   - component: {fileID: 2099955878}
   - component: {fileID: 390142296468372711}
-  - component: {fileID: 2099955881}
   m_Layer: 0
   m_Name: SpaceCamera
   m_TagString: SpaceCamera
@@ -269,18 +268,6 @@ MonoBehaviour:
   rotateSpeed: 90
   usedFixedUpdate: 1
   FPSCamera: {fileID: 1896160896}
---- !u!114 &2099955881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2099955877}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cc149aae4b4e9a4bab8417db1af9ba2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4776412161871450986
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,11 +728,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a1ae7c04ab5de48b139e833bdca1bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  isGrounded: 1
-  rotSpeed: 80
   anim: {fileID: 7383393078440166461}
   player: {fileID: 0}
+  text: {fileID: 0}
+  rotSpeed: 80
+  speed: 50
+  thrustPowerX: 30
+  thrustPowerY: 5
+  isGrounded: 1
+  rb: {fileID: 0}
 --- !u!54 &376950694158522816
 Rigidbody:
   m_ObjectHideFlags: 0

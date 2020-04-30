@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+///  Check if the player standing on anything. If yes he can jump.
+/// </summary>
 public class GroundCheck : MonoBehaviour
 {
     PlayerControl player;

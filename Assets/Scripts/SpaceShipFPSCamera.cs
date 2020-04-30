@@ -1,7 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+
+/// <summary>
+/// FPS veiw for the spaceship when you press H. Allow it to change to normal view when pressing H.
+/// </summary>
 public class SpaceShipFPSCamera : MonoBehaviour
 {
     [SerializeField]

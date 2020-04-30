@@ -1,23 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+    //  Properties relating to the player.
+    [SerializeField]
+    Vector3 crouching = new Vector3(0.1f, 0.05f, 0.1f);
+    [SerializeField]
+    Vector3 notCrouching = new Vector3(0.1f, 0.1f, 0.1f);
+    [SerializeField]
+    float speed = 1;
+    [SerializeField]
+    float jumpHeight = 0.005f;
+
+    //  References to other gameobjects or components.
     Rigidbody rb;
+    GameObject[] Planets;
+
+    //  Variable support for movement.
     float horozantialMovement;
     float verticalMovement;
-    float speed = 1;
-    float jumpHeight = 0.005f;
-    GameObject[] Planets;
-    const float G = 100f;
     bool jump;
     public bool canJump;
-    bool crouch = false;
-    Vector3 crouching = new Vector3(0.1f, 0.05f, 0.1f);
-    Vector3 notCrouching = new Vector3(0.1f, 0.1f, 0.1f);
+    bool crouch;
+    Vector3 dirBetweenPlanets;
+    float dis;
+    float force;
+    float curForce;
+    Vector3 bigPlanet;
 
+    //  Save the references.
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -26,17 +37,16 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 dirBetweenPlanets;
-        float dis;
-        float force;
-        float curForce = 0;
-        Vector3 bigPlanet = Vector3.zero;
+        //  Apply Newton's gravitational law and align the player's up axis with the force vector from the planet with the 
+        //  strongest gravitational pull.
+        curForce = 0;
+        bigPlanet = Vector3.zero;
         for (int i = 0; i < Planets.Length; i++)
         {
             dirBetweenPlanets = Planets[i].GetComponent<Rigidbody>().position - rb.position;
             dis = dirBetweenPlanets.magnitude;
             dis *= dis;
-            force = G * rb.mass * Planets[i].GetComponent<Rigidbody>().mass / dis;
+            force = GameManager.G * rb.mass * Planets[i].GetComponent<Rigidbody>().mass / dis;
             rb.AddForce(dirBetweenPlanets.normalized * force);
             if (force > curForce)
             {
@@ -45,6 +55,7 @@ public class PlayerControl : MonoBehaviour
             }
         }
         transform.rotation = Quaternion.FromToRotation(transform.up, -bigPlanet.normalized) * transform.rotation;
+        //  Check if the player can jump and allow him to jump if there's jump input.
         if (jump && canJump && !crouch)
         {
             canJump = false;
@@ -55,12 +66,15 @@ public class PlayerControl : MonoBehaviour
     
     private void Update()
     {
+        //  Take input.
         jump = Input.GetKeyDown(KeyCode.Space);
         horozantialMovement = Input.GetAxis("Horizontal") * Time.deltaTime;
         verticalMovement = Input.GetAxis("Vertical") * Time.deltaTime;
         crouch = Input.GetKey(KeyCode.LeftControl);
+        //  Move the player.
         Vector3 movement = (transform.forward * verticalMovement * speed) + (transform.right * horozantialMovement * speed);
         transform.position += movement;
+        //  Crouch the player by scaling him down and lower his speed.
         if (crouch)
         {
             speed = 0.5f;
@@ -69,7 +83,7 @@ public class PlayerControl : MonoBehaviour
         else { speed = 1; transform.localScale = notCrouching; }
     }
 
-
+    //  If you touch a planet take his velocity as your velocity.
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.tag == "Planet")

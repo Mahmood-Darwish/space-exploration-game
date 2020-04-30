@@ -971,6 +971,11 @@ MonoBehaviour:
     volume: 0.35
     loop: 1
     source: {fileID: 0}
+  - name: LiftOff
+    clip: {fileID: 8300000, guid: c9418d341abbeec4383ea4d1537ff23e, type: 3}
+    volume: 0.35
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &1331873022
 Transform:
   m_ObjectHideFlags: 0
@@ -1369,22 +1374,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 123277584, guid: 197c2719a82d4404899608e3fad20026, type: 3}
-      propertyPath: m_TagString
-      value: SpawnPoint
-      objectReference: {fileID: 0}
-    - target: {fileID: 123277585, guid: 197c2719a82d4404899608e3fad20026, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 123277585, guid: 197c2719a82d4404899608e3fad20026, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 123277585, guid: 197c2719a82d4404899608e3fad20026, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 1039530595, guid: 197c2719a82d4404899608e3fad20026, type: 3}
       propertyPath: player
       value: 

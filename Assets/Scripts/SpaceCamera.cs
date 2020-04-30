@@ -1,31 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[RequireComponent(typeof(Camera))]
+
 public class SpaceCamera : MonoBehaviour
 {
+    //  Properties about our camera.
+    [SerializeField]
+    float rotateSpeed = 90.0f;
+    [SerializeField]
+    bool usedFixedUpdate = true;
 
-    public float rotateSpeed = 90.0f;
-    public bool usedFixedUpdate = true;
-    private Transform target;
-    private Vector3 startOffset;
+    //  Which camera we should switch to when pressing H.
     [SerializeField]
     GameObject FPSCamera;
 
+    //  Support for our calculations.
+    private Transform target;
+    private Vector3 startOffset;
+
+    //  Save the place we want our camera to be in and let it deattach itself from the object.
     private void Start()
     {
         target = transform.parent;
-
-        if (target == null)
-            Debug.LogWarning(name + ": Lag Camera will not function correctly without a target.");
-        if (transform.parent == null)
-            Debug.LogWarning(name + ": Lag Camera will not function correctly without a parent to derive the initial offset from.");
-
         startOffset = transform.localPosition;
         transform.SetParent(null);
     }
 
+    //  Change view if we press H. Update camera if wanted.
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.H))
@@ -37,19 +37,18 @@ public class SpaceCamera : MonoBehaviour
             UpdateCamera();
     }
 
+    //  Update camera if wanted.
     private void FixedUpdate()
     {
         if (usedFixedUpdate)
             UpdateCamera();
     }
 
+    //  Move the camera to the required position.
     private void UpdateCamera()
     {
-        if (target != null)
-        {
-            transform.position = target.TransformPoint(startOffset);
-            transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation * Quaternion.Euler(10, 90, 0) , rotateSpeed * Time.deltaTime);
-        }
+        transform.position = target.TransformPoint(startOffset);
+        transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation * Quaternion.Euler(10, 90, 0) , rotateSpeed * Time.deltaTime);
     }
 }
 
