@@ -28,7 +28,7 @@ public class SpaceShip : MonoBehaviour
     float dis;
     float force;
     float curForce;
-    Vector3 bigPlanet;
+    public Vector3 bigPlanet;
     float yaw;
     float pitch;
     float roll;
